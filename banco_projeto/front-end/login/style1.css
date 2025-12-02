@@ -1,0 +1,334 @@
+/* Reset e variáveis para consistência e manutenção */
+:root {
+    --primary-color: #10b981; /* Verde emerald */
+    --primary-hover: #059669;
+    --secondary-color: #f0fdf4; /* Fundo claro verde */
+    --accent-color: #22c55e; /* Verde mais claro para sucesso */
+    --error-color: #ef4444; /* Vermelho para erros */
+    --text-color: #0f172a;
+    --light-text: #64748b;
+    --border-color: #a7f3d0;
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --border-radius: 20px;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-family: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos globais */
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #16a34a 25%, #15803d 50%, #047857 75%, #065f46 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Fundo animado com partículas e formas geométricas */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(5, 150, 105, 0.1) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='1' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E") repeat;
+    animation: float 30s infinite linear;
+    z-index: -1;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-50px) rotate(120deg); }
+    66% { transform: translateY(-100px) rotate(240deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* Container principal */
+.login-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+    animation: slideIn 1.2s ease-out;
+    position: relative;
+}
+
+/* Animação de entrada aprimorada */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.85) rotateX(10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0deg);
+    }
+}
+
+/* Card do formulário com efeito glassmorphism aprimorado */
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow), 0 0 100px rgba(16, 185, 129, 0.2);
+    padding: 70px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Elemento decorativo no card */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+    animation: rotate 20s infinite linear;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Área do ícone com ícone de usuário aprimorado */
+.icon-area {
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.icon-area::before {
+    content: '';
+    width: 90px;
+    height: 90px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310b981'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    animation: pulse 3s infinite ease-in-out;
+    border: 3px solid rgba(16, 185, 129, 0.2);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3); }
+    50% { transform: scale(1.1); box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5); }
+}
+
+/* Título aprimorado */
+h2 {
+    font-size: 38px;
+    font-weight: 800;
+    margin-bottom: 45px;
+    color: var(--text-color);
+    letter-spacing: -1.5px;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+/* Grupos de input aprimorados */
+.input-group {
+    margin-bottom: 35px;
+    text-align: left;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 20px 30px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 17px;
+    font-family: var(--font-family);
+    background: rgba(255, 255, 255, 0.95);
+    transition: var(--transition);
+    outline: none;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.input-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.2), 0 8px 25px rgba(16, 185, 129, 0.15);
+    transform: translateY(-4px);
+}
+
+.input-group input:focus + label {
+    color: var(--primary-color);
+}
+
+.input-group input::placeholder {
+    color: var(--light-text);
+    font-style: italic;
+    transition: var(--transition);
+}
+
+.input-group input:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* Estados de erro aprimorados */
+.input-group.error input {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.2);
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Botão de entrar aprimorado */
+#btn_entrar {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#btn_entrar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.8s;
+}
+
+#btn_entrar:hover::before {
+    left: 100%;
+}
+
+#btn_entrar:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
+}
+
+#btn_entrar:active {
+    transform: translateY(-3px) scale(0.98);
+}
+
+/* Link de esqueci a senha aprimorado */
+.forgot-password {
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+    position: relative;
+}
+
+.forgot-password::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s;
+}
+
+.forgot-password:hover::after {
+    width: 100%;
+}
+
+.forgot-password:hover {
+    color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 768px) {
+    .login-container {
+        max-width: 95%;
+    }
+    .card {
+        padding: 60px 40px;
+    }
+    h2 {
+        font-size: 32px;
+    }
+    .icon-area::before {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 50px 30px;
+    }
+    h2 {
+        font-size: 28px;
+    }
+    .input-group input {
+        padding: 18px 25px;
+        font-size: 16px;
+    }
+    #btn_entrar {
+        padding: 18px;
+        font-size: 17px;
+    } ⬤
